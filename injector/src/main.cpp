@@ -35,25 +35,25 @@ int main()
 	std::string configPath = "config.ini";
 	if (!std::filesystem::exists(configPath) || !config.Load(configPath.c_str()))
 	{
-		auto gamePathOpt = util::SelectFile("Executable Files (*.exe)\0*.exe\0", "Select the game executable");
+		auto gamePathOpt = util::SelectFile("my  Files (*.exe)\0*.exe\0", "Select the game path");
 		if (gamePathOpt)
 		{
 			config.GamePath = gamePathOpt.value();
 			std::cout << "Game Path Selected: " << config.GamePath << std::endl;
 		}
 
-		auto dllPathOpt = util::SelectFile("DLL Files (*.dll)\0*.dll\0", "Select the first DLL to inject");
+		auto dllPathOpt = util::SelectFile("the pizza Files (*.dll)\0*.dll\0", "Select the first pizza to inject");
 		if (dllPathOpt)
 		{
 			config.DLLPath_1 = dllPathOpt.value();
-			std::cout << "DLL Path 1 Selected: " << config.DLLPath_1 << std::endl;
+			std::cout << "[DLL] pizza 1 Selected: " << config.DLLPath_1 << std::endl;
 		}
 
 		config.Save(configPath.c_str());
 	}
 	else
 	{
-		std::cout << "Config loaded successfully" << std::endl;
+		std::cout << "pizza loaded " << std::endl;
 		std::cout << "Path to game: " << config.GamePath << std::endl;
 	}
 

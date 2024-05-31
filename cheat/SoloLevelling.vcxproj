@@ -86,22 +86,8 @@
     <ClInclude Include="src\appdata\il2cpp-types.h" />
     <ClInclude Include="src\cheat\cheat.h" />
     <ClInclude Include="src\cheat\features\DamageHack.h" />
-    <ClInclude Include="src\cheat\features\Debug.h" />
-    <ClInclude Include="src\cheat\features\DisableWebView.h" />
-    <ClInclude Include="src\cheat\features\DumbEnemies.h" />
-    <ClInclude Include="src\cheat\features\EntityManager.h" />
-    <ClInclude Include="src\cheat\features\FovChanger.h" />
-    <ClInclude Include="src\cheat\features\FPSUnlock.h" />
     <ClInclude Include="src\cheat\features\GodMode.h" />
-    <ClInclude Include="src\cheat\features\MissionTime.h" />
-    <ClInclude Include="src\cheat\features\MobVacuum.h" />
-    <ClInclude Include="src\cheat\features\NoCooldown.h" />
-    <ClInclude Include="src\cheat\features\PlayerSpeed.h" />
-    <ClInclude Include="src\cheat\features\SkipIntroMovie.h" />
-    <ClInclude Include="src\cheat\features\TimeScale.h" />
     <ClInclude Include="src\cheat\vars.h" />
-    <ClInclude Include="src\ConfigEntry.hpp" />
-    <ClInclude Include="src\ConfigManager.hpp" />
     <ClInclude Include="src\events.h" />
     <ClInclude Include="src\events\event.hpp" />
     <ClInclude Include="src\events\handlers\abstracteventhandler.hpp" />
@@ -166,22 +152,9 @@
     <ClCompile Include="src\appdata\il2cpp-init.cpp" />
     <ClCompile Include="src\cheat\cheat.cpp" />
     <ClCompile Include="src\cheat\features\DamageHack.cpp" />
-    <ClCompile Include="src\cheat\features\Debug.cpp" />
-    <ClCompile Include="src\cheat\features\DisableWebView.cpp" />
-    <ClCompile Include="src\cheat\features\DumbEnemies.cpp" />
-    <ClCompile Include="src\cheat\features\EntityManager.cpp" />
-    <ClCompile Include="src\cheat\features\FovChanger.cpp" />
-    <ClCompile Include="src\cheat\features\FPSUnlock.cpp" />
     <ClCompile Include="src\cheat\features\GodMode.cpp" />
-    <ClCompile Include="src\cheat\features\MissionTime.cpp" />
-    <ClCompile Include="src\cheat\features\MobVacuum.cpp" />
-    <ClCompile Include="src\cheat\features\NoCooldown.cpp" />
-    <ClCompile Include="src\cheat\features\PlayerSpeed.cpp" />
-    <ClCompile Include="src\cheat\features\SkipIntroMovie.cpp" />
-    <ClCompile Include="src\cheat\features\TimeScale.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\events.cpp" />
-    <ClCompile Include="src\events\joins\abstracteventjoin.cpp" />
     <ClCompile Include="src\events\joins\eventjoinwrapper.cpp" />
     <ClCompile Include="src\Hotkey.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -204,6 +177,9 @@
   <ItemGroup>
     <Library Include="vendor\detours\detours-x64.lib" />
     <Library Include="vendor\detours\detours-x86.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Release\eventjoinwrapper.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

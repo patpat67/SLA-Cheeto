@@ -75,21 +75,12 @@ namespace ImGui
     bool ListBox(const char* label, int* current_item, std::function<const char* (int)> lambda, int items_count, int height_in_items);
     bool Combo(const char* label, int* current_item, std::function<const char* (int)> lambda, int items_count, int height_in_items);
     void Separator(const char* label);
-    void RainbowSeparator(const char* label);
 }
 
 namespace GuiUtil
 {
     float GetX();
     float GetY();
-    void RainbowRectFilled(int x, int y, int width, int height, float flSpeed, float& flRainbow);
-    void RainbowLine();
-    void Line(int newId);
     void LineVertical();
-    void LineHorizontal();
-    void CenterText(const char* text, int lineId, bool separator);
-    void CenterTextEx(const char* text, float width, int lineId, bool separator);
-    void DrawTextImGui(ImVec2 position, ImColor color, const char* format, ...);
-    void DrawTextOutlined(const char* text);
-    ImVec4 ToVec4(float r, float g, float b, float a);
+
 }

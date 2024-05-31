@@ -4,8 +4,6 @@
 #include "Utils.h"
 #include "game-utils.hpp"
 
-#include "MobVacuum.h"
-
 namespace Cheat::Features
 {
 	DamageHack::DamageHack()

@@ -118,12 +118,6 @@
     <ClInclude Include="src\Render\Gui\utils\color.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConfigEntry.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ConfigManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Render\Gui\fonts\cousine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -179,9 +173,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\HookManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Hotkey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\appdata\il2cpp-api-functions.h">
@@ -253,46 +244,10 @@
     <ClInclude Include="vendor\UnityResolve\UnityResolve.hpp">
       <Filter>vendor\UnityResolve</Filter>
     </ClInclude>
-    <ClInclude Include="src\cheat\features\TimeScale.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\SkipIntroMovie.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\PlayerSpeed.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\NoCooldown.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\MobVacuum.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\MissionTime.h">
-      <Filter>features</Filter>
-    </ClInclude>
     <ClInclude Include="src\cheat\features\GodMode.h">
       <Filter>features</Filter>
     </ClInclude>
-    <ClInclude Include="src\cheat\features\FPSUnlock.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\FovChanger.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\EntityManager.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\DumbEnemies.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\DisableWebView.h">
-      <Filter>features</Filter>
-    </ClInclude>
     <ClInclude Include="src\cheat\features\DamageHack.h">
-      <Filter>features</Filter>
-    </ClInclude>
-    <ClInclude Include="src\cheat\features\Debug.h">
       <Filter>features</Filter>
     </ClInclude>
     <ClInclude Include="src\methods\UnityEngine.CoreModule.hpp">
@@ -302,6 +257,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\methods\mscorlib.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hotkey.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -330,9 +288,6 @@
     <ClCompile Include="vendor\imgui\backends\imgui_impl_win32.cpp">
       <Filter>vendor\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\joins\abstracteventjoin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\cheat\cheat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -360,9 +315,6 @@
     <ClCompile Include="src\appdata\helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hotkey.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\appdata\il2cpp-init.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -378,47 +330,17 @@
     <ClCompile Include="src\Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cheat\features\TimeScale.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\SkipIntroMovie.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\PlayerSpeed.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\NoCooldown.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\MobVacuum.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
     <ClCompile Include="src\cheat\features\GodMode.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\FPSUnlock.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\FovChanger.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\MissionTime.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\EntityManager.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\DumbEnemies.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\DisableWebView.cpp">
-      <Filter>features</Filter>
-    </ClCompile>
-    <ClCompile Include="src\cheat\features\Debug.cpp">
       <Filter>features</Filter>
     </ClCompile>
     <ClCompile Include="src\cheat\features\DamageHack.cpp">
       <Filter>features</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hotkey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Release\eventjoinwrapper.obj" />
   </ItemGroup>
 </Project>

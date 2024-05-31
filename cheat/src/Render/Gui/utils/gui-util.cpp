@@ -332,38 +332,6 @@ void ImGui::Separator(const char* label)
 
 	ImGui::NewLine();
 }
-void ImGui::RainbowSeparator(const char* label)
-{
-	Color colColor(0, 0, 0);
-	static float flRainbow;
-	float flSpeed = 0.001f;
-	flRainbow += flSpeed;
-	if (flRainbow > 1.f) flRainbow = 0.f;
-
-	const auto size = ImGui::CalcTextSize(label);
-	auto draw_list = ImGui::GetWindowDrawList();
-	const auto width = ImGui::GetContentRegionAvail().x;
-
-	const auto cursor = ImGui::GetCursorScreenPos();
-	const auto pos = ImVec2(cursor.x + width / 2 - size.x / 2, cursor.y);
-
-	const auto start_col = ImGui::GetStyleColorVec4(ImGuiCol_ChildBg);
-	const auto col = ImGui::GetColorU32(start_col);
-	const auto col2 = ImGui::GetColorU32(ImVec4(start_col.x, start_col.y, start_col.z, 0));
-
-	draw_list->AddText(pos, ImGui::GetColorU32(ImGui::GetStyleColorVec4(ImGuiCol_Text)), label);
-	for (float i = 0; i < width; i++)
-	{
-		float hue = (1.f / (float)width) * i;
-		hue -= flRainbow;
-		if (hue < 0.f) hue += 1.f;
-		Color colRainbow = colColor.FromHSB(hue, 1.f, 1.f);
-
-		draw_list->AddRectFilledMultiColor(ImVec2(cursor.x, cursor.y + size.y / 2), ImVec2(pos.x - 5.f, (cursor.y + size.y / 2) + 2), col2, colRainbow.GetU32(), col, col2);
-		draw_list->AddRectFilledMultiColor(ImVec2(pos.x + size.x + 5.f, cursor.y + size.y / 2), ImVec2(cursor.x + width, (cursor.y + size.y / 2) + 2), colRainbow.GetU32(), col2, col, col2);
-	}
-	ImGui::NewLine();
-}
 
 float GuiUtil::GetX()
 {
@@ -375,119 +343,10 @@ float GuiUtil::GetY()
 	return ImGui::GetContentRegionAvail().y;
 }
 
-void GuiUtil::RainbowRectFilled(int x, int y, int width, int height, float flSpeed, float& flRainbow)
-{
-	ImDrawList* windowDrawList = ImGui::GetWindowDrawList();
-	Color colColor(0, 0, 0);
-	flRainbow += flSpeed;
-	if (flRainbow > 1.f) flRainbow = 0.f;
-
-	for (float i = 0; i < width; i++)
-	{
-		float hue = (1.f / (float)width) * i;
-		hue -= flRainbow;
-		if (hue < 0.f) hue += 1.f;
-		Color colRainbow = colColor.FromHSB(hue, 1.f, 1.f);
-		windowDrawList->AddRectFilled(ImVec2(x + i, y), ImVec2(width, height), colRainbow.GetU32());
-	}
-}
-
-void GuiUtil::RainbowLine()
-{
-	ImGui::BeginGroup();
-	static float flRainbow;
-	float flSpeed = 0.001f;
-	int height, width;
-
-	ImVec2 curPos = ImGui::GetCursorPos();
-	ImVec2 curWindowPos = ImGui::GetWindowPos();
-	curPos.x += curWindowPos.x;
-	curPos.y += curWindowPos.y;
-	ImDrawList* windowDrawList = ImGui::GetWindowDrawList();
-	GuiUtil::RainbowRectFilled(curPos.x - 6, curPos.y - 6, WINDOW_WIDTH, curPos.y - 2, flSpeed, flRainbow);
-
-	ImGui::EndGroup();
-}
-
-void GuiUtil::Line(int newId)
-{
-	std::string id = "pp_line" + std::to_string(newId);
-	ImGui::PushStyleColor(ImGuiCol_ChildBg, IM_COL32(0, 0, 0, 0));
-	{
-		ImGui::BeginChild(id.c_str(), ImVec2(ImGui::GetContentRegionAvail().x, 1), false);
-		ImGui::Separator();
-		ImGui::EndChild();
-	}
-	ImGui::PopStyleColor();
-}
 
 void GuiUtil::LineVertical()
 {
 	ImGui::SameLine();
 	ImGui::SeparatorEx(ImGuiSeparatorFlags_Vertical);
 	ImGui::SameLine();
-}
-
-void GuiUtil::LineHorizontal()
-{
-	ImGui::SameLine();
-	ImGui::SeparatorEx(ImGuiSeparatorFlags_Horizontal);
-	ImGui::SameLine();
-}
-
-void GuiUtil::CenterText(const char* text, int lineId, bool separator)
-{
-	if (text == nullptr)
-		return;
-
-	ImGui::SameLine((ImGui::GetContentRegionAvail().x / 2) - (ImGui::CalcTextSize(text).x / 2));
-	ImGui::Text(text);
-	ImGui::Spacing();
-	if (true == separator)
-		Line(lineId);
-}
-
-void GuiUtil::CenterTextEx(const char* text, float width, int lineId, bool separator)
-{
-	if (text == nullptr)
-		return;
-
-	ImGui::SameLine((width / 2) - (ImGui::CalcTextSize(text).x / 2));
-	ImGui::Text(text);
-
-	if (true == separator)
-		Line(lineId);
-}
-
-void GuiUtil::DrawTextImGui(ImVec2 position, ImColor color, const char* format, ...)
-{
-	if (format == nullptr)
-		return;
-
-	char buffer[512];
-
-	va_list  args;
-	va_start(args, format);
-	vsnprintf_s(buffer, sizeof(buffer), format, args);
-	va_end(args);
-
-	ImGui::GetBackgroundDrawList()->AddText(position, color, format, buffer);
-}
-
-void GuiUtil::DrawTextOutlined(const char* text)
-{
-	ImGuiWindow* window = ImGui::GetCurrentWindow();
-	Color col;
-	ImVec2 text_pos(window->DC.CursorPos.x, window->DC.CursorPos.y + window->DC.CurrLineTextBaseOffset);
-
-	GuiUtil::DrawTextImGui(ImVec2(text_pos.x, text_pos.y - 1), ImGui::ColorConvertFloat4ToU32(ImVec4(col.r() / MAX_RGB, col.g() / MAX_RGB, col.b() / MAX_RGB, 1.00f)), text);
-	GuiUtil::DrawTextImGui(ImVec2(text_pos.x, text_pos.y + 1), ImGui::ColorConvertFloat4ToU32(ImVec4(col.r() / MAX_RGB, col.g() / MAX_RGB, col.b() / MAX_RGB, 1.00f)), text);
-	GuiUtil::DrawTextImGui(ImVec2(text_pos.x - 1, text_pos.y), ImGui::ColorConvertFloat4ToU32(ImVec4(col.r() / MAX_RGB, col.g() / MAX_RGB, col.b() / MAX_RGB, 1.00f)), text);
-	GuiUtil::DrawTextImGui(ImVec2(text_pos.x + 1, text_pos.y), ImGui::ColorConvertFloat4ToU32(ImVec4(col.r() / MAX_RGB, col.g() / MAX_RGB, col.b() / MAX_RGB, 1.00f)), text);
-	GuiUtil::DrawTextImGui(ImVec2(text_pos.x, text_pos.y), ImGui::ColorConvertFloat4ToU32(ImVec4(col.r() / MAX_RGB, col.g() / MAX_RGB, col.b() / MAX_RGB, 1.00f)), text);
-}
-
-ImVec4 GuiUtil::ToVec4(float r, float g, float b, float a)
-{
-	return ImVec4(r / MAX_RGB, g / MAX_RGB, b / MAX_RGB, a / MAX_RGB);
 }
